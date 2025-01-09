@@ -29,7 +29,7 @@ namespace DefendersDeck.API.Middlewares
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-            var response = BaseResponse<object>.Failed(message: "An unexpected error occurred.");
+            var response = BaseResponse<object>.Failed(message: exception.Message);
             return context.Response.WriteAsync(JsonConvert.SerializeObject(response));
         }
     }
