@@ -1,3 +1,4 @@
+using DefendersDeck.API.Middlewares;
 using DefendersDeck.Business;
 using DefendersDeck.DataAccess;
 
@@ -66,6 +67,8 @@ if (app.Environment.IsDevelopment())
         // options.RoutePrefix = string.Empty;
     });
 }
+
+app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 
