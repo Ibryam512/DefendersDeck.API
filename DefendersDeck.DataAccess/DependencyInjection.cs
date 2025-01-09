@@ -11,9 +11,9 @@ namespace DefendersDeck.DataAccess
     {
         public static IServiceCollection AddDataAccess(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            var connectionString = configuration.GetConnectionString("PostgresConnection");
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString));
+                options.UseNpgsql(connectionString));
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IRepository<User>, UserRepository>();

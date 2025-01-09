@@ -3,8 +3,8 @@ using System;
 using DefendersDeck.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -18,17 +18,17 @@ namespace DefendersDeck.DataAccess.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "9.0.0")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("CardGame", b =>
                 {
                     b.Property<int>("CardsId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("GamesId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("CardsId", "GamesId");
 
@@ -40,10 +40,10 @@ namespace DefendersDeck.DataAccess.Migrations
             modelBuilder.Entity("CardUser", b =>
                 {
                     b.Property<int>("CardsId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("UsersId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("CardsId", "UsersId");
 
@@ -56,36 +56,36 @@ namespace DefendersDeck.DataAccess.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Amount")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int>("Price")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("Turns")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("Type")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -96,7 +96,7 @@ namespace DefendersDeck.DataAccess.Migrations
                         {
                             Id = 1,
                             Amount = 25,
-                            CreationDate = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreationDate = new DateTime(2025, 1, 8, 22, 0, 0, 0, DateTimeKind.Utc),
                             Description = "When this card is placed, a one-time attack is activated, dealing 25 damage.",
                             ImageUrl = "",
                             Name = "Fire Arrows",
@@ -108,7 +108,7 @@ namespace DefendersDeck.DataAccess.Migrations
                         {
                             Id = 2,
                             Amount = 25,
-                            CreationDate = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreationDate = new DateTime(2025, 1, 8, 22, 0, 0, 0, DateTimeKind.Utc),
                             Description = "When this card is placed, for the next three turns, an earthquake occurs, dealing 25 damage.",
                             ImageUrl = "",
                             Name = "Earthquake",
@@ -120,7 +120,7 @@ namespace DefendersDeck.DataAccess.Migrations
                         {
                             Id = 3,
                             Amount = 30,
-                            CreationDate = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreationDate = new DateTime(2025, 1, 8, 22, 0, 0, 0, DateTimeKind.Utc),
                             Description = "When this card is placed, a one-time sound wave appears, dealing 30 damage.",
                             ImageUrl = "",
                             Name = "Sound Wave",
@@ -132,7 +132,7 @@ namespace DefendersDeck.DataAccess.Migrations
                         {
                             Id = 4,
                             Amount = 20,
-                            CreationDate = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreationDate = new DateTime(2025, 1, 8, 22, 0, 0, 0, DateTimeKind.Utc),
                             Description = "When this card is placed, a metal wall is generated, protecting against 20 damage",
                             ImageUrl = "",
                             Name = "Fullmetal Alchemy",
@@ -144,7 +144,7 @@ namespace DefendersDeck.DataAccess.Migrations
                         {
                             Id = 5,
                             Amount = 50,
-                            CreationDate = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreationDate = new DateTime(2025, 1, 8, 22, 0, 0, 0, DateTimeKind.Utc),
                             Description = "When this card is placed, a water shield appears for one turn, absorbing up to 50 attack damage.",
                             ImageUrl = "",
                             Name = "Water Shield",
@@ -156,7 +156,7 @@ namespace DefendersDeck.DataAccess.Migrations
                         {
                             Id = 6,
                             Amount = 30,
-                            CreationDate = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreationDate = new DateTime(2025, 1, 8, 22, 0, 0, 0, DateTimeKind.Utc),
                             Description = "When this card is placed, the tower restores 30 health as a one-time effect.",
                             ImageUrl = "",
                             Name = "First Aid",
@@ -168,7 +168,7 @@ namespace DefendersDeck.DataAccess.Migrations
                         {
                             Id = 7,
                             Amount = 20,
-                            CreationDate = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreationDate = new DateTime(2025, 1, 8, 22, 0, 0, 0, DateTimeKind.Utc),
                             Description = "When this card is placed, it restores 20 health per turn for three turns.",
                             ImageUrl = "",
                             Name = "Special Help",
@@ -180,7 +180,7 @@ namespace DefendersDeck.DataAccess.Migrations
                         {
                             Id = 8,
                             Amount = 100,
-                            CreationDate = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreationDate = new DateTime(2025, 1, 8, 22, 0, 0, 0, DateTimeKind.Utc),
                             Description = "When this card is placed, the tower's entire health is restored as a one-time effect.",
                             ImageUrl = "",
                             Name = "Health Potion",
@@ -192,7 +192,7 @@ namespace DefendersDeck.DataAccess.Migrations
                         {
                             Id = 9,
                             Amount = 0,
-                            CreationDate = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreationDate = new DateTime(2025, 1, 8, 22, 0, 0, 0, DateTimeKind.Utc),
                             Description = "When this card is placed, all dead enemies reappear as shadows and attack the living enemies. Shadows disappear when they kill an enemy.",
                             ImageUrl = "",
                             Name = "Shadow Army",
@@ -206,21 +206,21 @@ namespace DefendersDeck.DataAccess.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("Duration")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("EnemiesKilled")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -233,27 +233,27 @@ namespace DefendersDeck.DataAccess.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("CurrencyAmount")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("ProfileImageUrl")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

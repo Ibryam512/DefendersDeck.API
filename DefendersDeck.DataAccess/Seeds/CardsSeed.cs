@@ -18,7 +18,7 @@ namespace DefendersDeck.DataAccess.Seeds
                 Amount = 25,
                 Price = 50,
                 Turns = 1,
-                CreationDate = DateTime.Today,
+                CreationDate = DateTime.Today.ToUniversalTime(),
             },
             new()
             {
@@ -30,7 +30,7 @@ namespace DefendersDeck.DataAccess.Seeds
                 Amount = 25,
                 Price = 70,
                 Turns = 3,
-                CreationDate = DateTime.Today,
+                CreationDate = DateTime.Today.ToUniversalTime(),
             },
             new()
             {
@@ -42,7 +42,7 @@ namespace DefendersDeck.DataAccess.Seeds
                 Amount = 30,
                 Price = 60,
                 Turns = 1,
-                CreationDate= DateTime.Today,
+                CreationDate= DateTime.Today.ToUniversalTime(),
             },
             new()
             {
@@ -54,7 +54,7 @@ namespace DefendersDeck.DataAccess.Seeds
                 Amount = 20,
                 Price = 80,
                 Turns = 1,
-                CreationDate = DateTime.Today
+                CreationDate = DateTime.Today.ToUniversalTime()
             },
             new()
             {
@@ -66,7 +66,7 @@ namespace DefendersDeck.DataAccess.Seeds
                 Amount = 50,
                 Price = 100,
                 Turns = 1,
-                CreationDate = DateTime.Today
+                CreationDate = DateTime.Today.ToUniversalTime()
             },
             new()
             {
@@ -78,7 +78,7 @@ namespace DefendersDeck.DataAccess.Seeds
                 Amount = 30,
                 Price = 40,
                 Turns = 1,
-                CreationDate = DateTime.Today
+                CreationDate = DateTime.Today.ToUniversalTime()
             },
             new()
             {
@@ -90,7 +90,7 @@ namespace DefendersDeck.DataAccess.Seeds
                 Amount = 20,
                 Price = 70,
                 Turns = 3,
-                CreationDate = DateTime.Today
+                CreationDate = DateTime.Today.ToUniversalTime()
             },
             new()
             {
@@ -102,7 +102,7 @@ namespace DefendersDeck.DataAccess.Seeds
                 Amount = 100,
                 Price = 120,
                 Turns = 1,
-                CreationDate = DateTime.Today
+                CreationDate = DateTime.Today.ToUniversalTime()
             },
             new()
             {
@@ -114,7 +114,7 @@ namespace DefendersDeck.DataAccess.Seeds
                 Amount = 0,
                 Price = 150,
                 Turns = 1,
-                CreationDate = DateTime.Today
+                CreationDate = DateTime.Today.ToUniversalTime()
             }
         ];
 
